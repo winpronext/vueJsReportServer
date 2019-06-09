@@ -1,0 +1,57 @@
+.multiselect__option{
+  white-space: normal;
+}
+.multiselect__tag{
+  background-color: #004997;
+}
+.multiselect__option--highlight{
+  background-color: #004997;
+}
+
+.btn-primary {
+  border-color: #004997;
+  background-color: #004997;
+}
+.multiselect__tag-icon:after {
+  color: white;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+  background-color: #004997;
+}
+.custom-control-input:checked~.custom-control-label::before{
+  background-color: #004997;
+}
+
+.navbar-brand{
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 0.5rem;
+  margin-right: 0rem;
+}
+
+.nav-link{
+  padding: 0px;
+}
+.btn-menu{
+  border-radius: 0rem;
+}
+.page-item.active .page-link{
+  background-color: #004997;
+  border-color: #004997;
+}
+
+.page-link{
+  color: #004997;
+}
+.header-nav-cl {
+  background-color: #004997;
+  padding: 0px;
+}
+.row-align-right {
+  float: right;
+}
+.multiselect__tags {
+  border: 1px solid #ced4da;
+}
+
