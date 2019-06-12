@@ -45,12 +45,12 @@ export default {
     margin-right: 0rem;
   }
   .btn-secondary {
-    background-color: #004997;
-    border-color: #004997;
+    background-color: #007bff;
+    border-color: #007bff;
   }
   .btn-primary {
-    background-color: #004997;
-    border-color: #004997;
+    background-color: #007bff;
+    border-color: #007bff;
   }
   .nav-link{
     padding: 0px;
@@ -59,14 +59,14 @@ export default {
     border-radius: 0rem;
   }
   .page-item.active .page-link{
-    background-color: #004997;
-    border-color: #004997;
+    background-color: #007bff;
+    border-color: #007bff;
   }
   .page-link{
-    color: #004997;
+    color: #007bff;
   }
   .header-nav-cl {
-    background-color: #004997;
+    background-color: #007bff;
     padding: 0px;
   }
 </style>
@@ -78,7 +78,7 @@ export default {
     color: rgba(255, 255, 255, 1);
   }
   #headerNav .dropdown-menu{
-    background-color: #004997;
+    background-color: #007bff;
   }
   #headerNav .dropdown-item{
     color:white;

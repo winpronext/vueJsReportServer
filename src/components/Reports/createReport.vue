@@ -64,6 +64,11 @@
           <h3 v-else style="color: red">{{testAnswer}}</h3>
         </b-col>
       </b-row>
+      <b-row v-if="testAnswer === 'Query is not problem'">
+        <b-col>
+          <b-button type="submit" variant="primary" @click="saveReport()">Сохранить</b-button>
+        </b-col>
+      </b-row>
     </div>
 </template>
 
@@ -81,7 +86,10 @@ export default {
       },
       sourceTypes: [],
       sources: [],
-      testAnswer: ''
+      testAnswer: '',
+      change: 0,
+      id: 0,
+      dir: ''
     }
   },
   mounted () {
@@ -113,6 +121,35 @@ export default {
       this.$store.commit('hidePreloader')
       alert(error.data)
     })
+    if (this.$route.params.report !== undefined) {
+      this.change = 1
+      this.$store.commit('showPreloader')
+      this.$store.commit('updateToken')
+      axios.get(this.$store.state.baseUrl + 'api/Report/GetReportSettings', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$store.state.token
+        },
+        params: {
+          reportid: this.$route.params.report.reportId
+        }
+      }).then(response => {
+        this.$store.commit('hidePreloader')
+        this.item.query = response.data.query
+        this.item.source = response.data.source
+        this.item.sourceType = response.data.sourceType
+        this.id = response.data.id
+        let i = this.$route.params.report.url.split('/')
+        let j = i[i.length - 1]
+        this.item.reportName = j
+        for (let n = 1; n < i.length - 1; n++) {
+          this.dir += '/' + i[n]
+        }
+      }).catch(error => {
+        this.$store.commit('hidePreloader')
+        alert(error.data)
+      })
+    }
   },
   methods: {
     testSelect () {
@@ -129,6 +166,26 @@ export default {
       }).catch(error => {
         this.$store.commit('hidePreloader')
         this.testAnswer = 'Query is problem ' + error
+      })
+    },
+    saveReport () {
+      this.$store.commit('showPreloader')
+      this.$store.commit('updateToken')
+      let i = {}
+      i = this.item
+      i.reportName = this.$route.params.directory + '/' + i.reportName
+      axios.post(this.$store.state.baseUrl + 'api/Report/SaveReport', i, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$store.state.token
+        }
+      }).then(response => {
+        this.$store.commit('hidePreloader')
+        this.$router.push({name: 'Home'})
+        location.reload()
+      }).catch(error => {
+        this.$store.commit('hidePreloader')
+        alert(error)
       })
     }
   }

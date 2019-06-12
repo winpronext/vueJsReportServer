@@ -20,19 +20,37 @@
         <h2>{{directory}}</h2>
       </b-row>
       <b-row>
+        <br>
+      </b-row>
+      <b-row>
+        <b-col>
         <b-list-group>
           <div v-for="(item,index) in items" :key=index>
-            <b-list-group-item v-if="item.isReport === 0" @click="changeDirectory(item.url)">
-              <img src="../assets/directory.png" height="15" width="15"/>
-              <img src="../assets/file.png" height="15" width="15" v-if="item.isReport === 1"/>
-              <b>{{getShortDirectory(item.url)}}</b>
+            <b-list-group-item v-if="item.isReport === 0">
+              <b-row>
+              <b-col @click="changeDirectory(item.url)">
+                <img src="../assets/directory.png" height="30" width="30"/>
+                <b style="font-size: 20pt; padding-left: 10px">{{getShortDirectory(item.url)}}</b>
+              </b-col>
+              <b-col cols="2">
+              <b-button variant="danger" style="float: right" @click="deleteDir(item)">Удалить</b-button>
+              </b-col>
+              </b-row>
             </b-list-group-item>
-            <b-list-group-item v-if="item.isReport === 1">
-              <img src="../assets/file.png" height="15" width="15"/>
-              <b>{{getShortDirectory(item.url)}}</b>
+            <b-list-group-item v-if="item.isReport === 1" >
+              <b-row>
+                <b-col  @click="reportView(item)">
+              <img src="../assets/file.png" height="30" width="30"/>
+              <b  style="font-size: 20pt; padding-left: 10px">{{getShortDirectory(item.url)}}</b>
+                </b-col>
+                <b-col cols="2">
+              <b-button variant="danger" style="float: right" @click="deleteDir(item)">Удалить</b-button>
+                </b-col>
+              </b-row>
             </b-list-group-item>
           </div>
         </b-list-group>
+        </b-col>
       </b-row>
     </div>
 </template>
@@ -87,6 +105,25 @@ export default {
         }
       }
       this.directory = t
+    },
+    reportView (item) {
+      this.$router.push({name: 'reportView', params: {item: item}})
+    },
+    deleteDir (item) {
+      this.$store.commit('showPreloader')
+      this.$store.commit('updateToken')
+      axios.post(this.$store.state.baseUrl + 'api/Directory/DeleteDirectory', item, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.$store.state.token
+        }
+      }).then(response => {
+        this.$store.commit('hidePreloader')
+        this.getDirectory()
+      }).catch(error => {
+        this.$store.commit('hidePreloader')
+        alert(error.data)
+      })
     }
   },
   watch: {

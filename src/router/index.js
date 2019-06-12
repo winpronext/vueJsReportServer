@@ -4,6 +4,7 @@ import Auth from '@/components/Auth'
 import Home from '@/components/Home'
 import createReport from '@/components/Reports/createReport'
 import createDirectory from '@/components/Reports/createDirectory'
+import reportView from '@/components/Reports/reportView'
 import userChange from '@/components/manager/userChange'
 Vue.use(Router)
 
@@ -44,6 +45,12 @@ export default new Router({
       path: '/Home/createDirectory',
       name: 'createDirectory',
       component: createDirectory,
+      beforeEnter: ifNotAuthenticated
+    },
+    {
+      path: '/Home/reportView',
+      name: 'reportView',
+      component: reportView,
       beforeEnter: ifNotAuthenticated
     }
   ]

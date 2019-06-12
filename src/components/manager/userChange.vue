@@ -1,24 +1,28 @@
 <template>
   <div>
     <b-row>
+      <b-col>
         <b-button variant="primary" @click="addUser" style="margin-right: 6px">Добавить</b-button>
         <b-button variant="info" @click="changeUser" style="margin-right: 6px">Изменить</b-button>
         <b-button variant="warning" @click="changePassword" style="margin-right: 6px">Изменить пароль</b-button>
         <b-button variant="danger" @click="deleteUser" style="margin-right: 6px">Удалить</b-button>
+      </b-col>
     </b-row>
     <b-row><br></b-row>
     <b-row>
-      <b-table
-        hover
-        bordered
-        striped
-        selectable
-        :fields="fields"
-        :select-mode="selectMode"
-        selectedVariant="success"
-        :items="items"
-        @row-selected="rowSelected"
-      ></b-table>
+      <b-col>
+        <b-table
+          hover
+          bordered
+          striped
+          selectable
+          :fields="fields"
+          :select-mode="selectMode"
+          selectedVariant="success"
+          :items="items"
+          @row-selected="rowSelected"
+        ></b-table>
+      </b-col>
     </b-row>
     <b-modal
       id="modal-prevent-closing"

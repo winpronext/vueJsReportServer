@@ -3,9 +3,7 @@
     <headerNav v-if="this.$route.path != '/auth'"></headerNav>
     <br>
     <transition :name="transition" mode="out-in">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+      <router-view></router-view>
     </transition>
     <preloader></preloader>
   </div>
