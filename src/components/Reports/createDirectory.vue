@@ -39,6 +39,7 @@ export default {
       }).then(response => {
         this.$store.commit('hidePreloader')
         this.$router.push({name: 'Home'})
+        location.reload()
       }).catch(error => {
         this.$store.commit('hidePreloader')
         alert(error.data)
