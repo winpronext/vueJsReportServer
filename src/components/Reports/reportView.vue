@@ -5,6 +5,7 @@
           <b-button variant="primary" style="float: left" @click="changeReport()">Редактировать</b-button>
         </b-col>
       </b-row>
+      <b-row><br></b-row>
       <b-row>
         <b-col>
           <b-table

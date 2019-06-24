@@ -169,24 +169,46 @@ export default {
       })
     },
     saveReport () {
-      this.$store.commit('showPreloader')
-      this.$store.commit('updateToken')
-      let i = {}
-      i = this.item
-      i.reportName = this.$route.params.directory + '/' + i.reportName
-      axios.post(this.$store.state.baseUrl + 'api/Report/SaveReport', i, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this.$store.state.token
-        }
-      }).then(response => {
-        this.$store.commit('hidePreloader')
-        this.$router.push({name: 'Home'})
-        location.reload()
-      }).catch(error => {
-        this.$store.commit('hidePreloader')
-        alert(error)
-      })
+      if (this.change === 0) {
+        this.$store.commit('showPreloader')
+        this.$store.commit('updateToken')
+        let i = {}
+        i = this.item
+        i.reportName = this.$route.params.directory + '/' + i.reportName
+        axios.post(this.$store.state.baseUrl + 'api/Report/SaveReport', i, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.$store.state.token
+          }
+        }).then(response => {
+          this.$store.commit('hidePreloader')
+          this.$router.push({name: 'Home'})
+          location.reload()
+        }).catch(error => {
+          this.$store.commit('hidePreloader')
+          alert(error)
+        })
+      } else {
+        this.$store.commit('showPreloader')
+        this.$store.commit('updateToken')
+        let i = {}
+        i = this.item
+        i.reportName = this.dir + '/' + i.reportName
+        i.id = this.id
+        axios.post(this.$store.state.baseUrl + 'api/Report/UpdateReport', i, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.$store.state.token
+          }
+        }).then(response => {
+          this.$store.commit('hidePreloader')
+          this.$router.push({name: 'Home'})
+          location.reload()
+        }).catch(error => {
+          this.$store.commit('hidePreloader')
+          alert(error)
+        })
+      }
     }
   }
 }

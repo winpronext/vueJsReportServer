@@ -27,13 +27,13 @@
     <b-modal
       id="modal-prevent-closing"
       ref="modal"
-      title="Submit Your Name"
+      title="Введите данные"
       @ok="handleOk"
       @hidden="resetModal"
     >
       <form ref="form" @submit.stop.prevent="handleSubmit">
         <b-form-group
-          label="Login"
+          label="Логин"
           label-for="name-input"
           invalid-feedback="Login is required"
         >
@@ -44,7 +44,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group v-if="item.id!==-1"
-                      label="Surname"
+                      label="Фамилия"
                       label-for="name-input"
                       invalid-feedback="Surname is required"
         >
@@ -55,7 +55,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group v-if="item.id!==-1"
-                      label="Name"
+                      label="Имя"
                       label-for="name-input"
                       invalid-feedback="Name is required"
         >
@@ -66,7 +66,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group v-if="item.id!==-1"
-                      label="middlename"
+                      label="Отчество"
                       label-for="name-input"
                       invalid-feedback="middlename is required"
         >
@@ -88,7 +88,7 @@
           ></b-form-input>
         </b-form-group>
         <b-form-group v-if="item.id < 1"
-                      label="password"
+                      label="Пароль"
                       label-for="name-input"
                       invalid-feedback="password is required"
         >
