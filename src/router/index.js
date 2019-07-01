@@ -6,6 +6,7 @@ import createReport from '@/components/Reports/createReport'
 import createDirectory from '@/components/Reports/createDirectory'
 import reportView from '@/components/Reports/reportView'
 import userChange from '@/components/manager/userChange'
+import source from '@/components/manager/source'
 Vue.use(Router)
 
 const ifNotAuthenticated = (to, from, next) => {
@@ -33,6 +34,12 @@ export default new Router({
       path: '/manager/userChange',
       name: 'userChange',
       component: userChange,
+      beforeEnter: ifNotAuthenticated
+    },
+    {
+      path: '/manager/source',
+      name: 'source',
+      component: source,
       beforeEnter: ifNotAuthenticated
     },
     {

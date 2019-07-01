@@ -8,6 +8,7 @@
       </b-nav-item-dropdown>
       <b-nav-item-dropdown text="Управление" left>
         <b-dropdown-item :to="{name:'userChange'}">Пользователи</b-dropdown-item>
+        <b-dropdown-item :to="{name:'source'}">Источник</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
     <b-navbar-nav class="ml-auto">

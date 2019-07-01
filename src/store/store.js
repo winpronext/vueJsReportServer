@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
   state: {
     showPreloader: false,
     // eslint-disable-next-line
-    baseUrl: 'http://AcerOld:8080/',
+    baseUrl: 'http://localhost:8080/',
     previosUrl: '',
     token: ''
   },
