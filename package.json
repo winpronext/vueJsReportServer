@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.0.0-rc.21",
     "vue": "^2.6.10",
     "vue-ctk-date-time-picker": "^1.4.3",
